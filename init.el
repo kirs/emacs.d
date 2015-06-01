@@ -92,7 +92,7 @@
 ;;
 ;; (require 'yaml-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-;; 
+;;
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 (add-to-list 'load-path "~/.emacs.d/vendor")
@@ -130,3 +130,36 @@
 ;; Langauage-specific
 (load "setup-clojure.el")
 (load "setup-js.el")
+
+(require 'ac-cider)
+(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+(eval-after-load "auto-complete"
+  '(progn
+     (add-to-list 'ac-modes 'cider-mode)
+     (add-to-list 'ac-modes 'cider-repl-mode)))
+
+(require 'bar-cursor)
+(bar-cursor-mode)
+
+(menu-bar-mode -1)                      ; meta semicolor remember it
+(tool-bar-mode -1)                      ; kills em all
+(delete-selection-mode 1)
+
+(setq tab-always-indent 'complete)
+(electric-indent-mode)
+(electric-pair-mode)
+
+(paredit-mode -1)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;(flyspell-mode 1)
+                                        ;(flymake-mode 1)
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;;(add-to-list 'load-path "~/.emacs.d/el-get/textmate/textmate.el")
+
+;;(require 'textmate)
+;;(textmate-mode)
+;;(flyspell-)
