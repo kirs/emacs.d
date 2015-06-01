@@ -169,10 +169,7 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
-;;(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
-;;(add-to-list 'load-path "~/.emacs.d/el-get/textmate/textmate.el")
-
 (require 'textmate)
 (textmate-mode)
+
 ;;(flyspell-)
